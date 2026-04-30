@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guilherme Neves — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FAFAF8;
+      --bg-alt: #F3F3F0;
+      --ink: #0F0F0D;
+      --ink-mid: #555550;
+      --ink-faint: #BBBBB5;
+      --border: #E4E4DF;
+      --accent: #0F0F0D;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3.5rem;
+      background: rgba(250,250,248,0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-color: var(--border); }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+    .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink-mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      display: flex; gap: 0.3rem; align-items: center;
+    }
+    .lang-btn:hover { border-color: var(--ink); color: var(--ink); }
+    .lang-btn .sep { opacity: 0.3; }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      align-items: center;
+      padding: 10rem 3.5rem 6rem;
+      gap: 6rem;
+    }
+    .hero-left {}
+    .hero-sup {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(4.5rem, 9vw, 9rem);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.025em;
+      margin-bottom: 2.5rem;
+    }
+    .hero-name em { font-style: italic; }
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      max-width: 42ch;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 3rem;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.5; }
+    .hero-right {}
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      background: var(--bg-alt);
+    }
+    .hero-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      filter: grayscale(15%);
+    }
+    .hero-caption {
+      margin-top: 1.25rem;
+      font-size: 0.75rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.06em;
+      display: flex; justify-content: space-between;
+    }
+
+    /* ── Section common ── */
+    .section-wrap { padding: 7rem 3.5rem; }
+    .section-wrap.alt { background: var(--bg-alt); }
+    .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 4rem;
+    }
+    .section-title em { font-style: italic; }
+
+    /* ── About ── */
+    #about { display: grid; grid-template-columns: 280px 1fr; gap: 6rem; align-items: start; }
+    .about-sticky { position: sticky; top: 7rem; }
+    .about-intro {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin-bottom: 2.5rem;
+    }
+    .about-intro em { font-style: italic; }
+    .about-text p {
+      font-size: 0.97rem;
+      color: var(--ink-mid);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+      max-width: 58ch;
+    }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 2rem;
+    }
+    .skill-item {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .skill-dot {
+      width: 4px; height: 4px;
+      background: var(--ink-faint);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .lang-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .lang-pill {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.3rem 0.7rem;
+      color: var(--ink-mid);
+    }
+
+    /* ── Portfolio ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+    }
+    .project-card {
+      background: var(--bg);
+      cursor: pointer;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: background 0.25s;
+      position: relative;
+    }
+    .project-card:hover { background: var(--bg-alt); }
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--bg-alt);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .thumb-placeholder {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--ink-faint);
+      letter-spacing: -0.02em;
+    }
+    .card-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      color: var(--ink-faint);
+      font-weight: 400;
+    }
+    .card-title {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .card-client {
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.06em;
+      margin-top: 0.2rem;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      max-width: 45ch;
+    }
+    .card-arrow {
+      position: absolute; top: 2.5rem; right: 2.5rem;
+      font-size: 1rem;
+      color: var(--ink-faint);
+      opacity: 0;
+      transform: translate(-4px, 4px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .project-card:hover .card-arrow { opacity: 1; transform: translate(0, 0); }
+
+    /* ── Experience ── */
+    #experience { border-top: 1px solid var(--border); }
+    .exp-table { width: 100%; border-collapse: collapse; }
+    .exp-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 180px;
+      gap: 3rem;
+      padding: 2.25rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .exp-row:last-child { border-bottom: none; }
+    .exp-period {
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.04em;
+      padding-top: 0.25rem;
+      line-height: 1.5;
+    }
+    .exp-co {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
+    }
+    .exp-role {
+      font-size: 0.8rem;
+      color: var(--ink-mid);
+      margin-bottom: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    .exp-desc {
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      max-width: 52ch;
+    }
+    .exp-tags {
+      display: flex; flex-wrap: wrap; gap: 0.35rem;
+      justify-content: flex-end;
+      padding-top: 0.25rem;
+    }
+    .exp-tag {
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.22rem 0.55rem;
+      color: var(--ink-faint);
+    }
+
+    /* ── Contact ── */
+    #contact {
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .contact-heading {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 3rem;
+    }
+    .contact-heading em { font-style: italic; }
+    .contact-links { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+    .contact-link {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink-mid);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 3px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .contact-link:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 2rem 3.5rem;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      color: var(--ink-faint);
+    }
+    .footer-year { font-size: 0.75rem; color: var(--ink-faint); }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 400;
+      background: rgba(15,15,13,0.6);
+      backdrop-filter: blur(6px);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-sheet {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      z-index: 500;
+      width: min(720px, 100vw);
+      background: var(--bg);
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+      pointer-events: none;
+    }
+    .modal-sheet.open { transform: translateX(0); pointer-events: all; }
+    .modal-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+    .modal-close-btn {
+      background: none; border: 1px solid var(--border);
+      border-radius: 2px; padding: 0.4rem 0.9rem;
+      cursor: pointer; font-family: var(--sans);
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-mid);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .modal-close-btn:hover { border-color: var(--ink); color: var(--ink); }
+    .modal-body { padding: 2.5rem; }
+    .modal-hero-thumb {
+      width: 100%; aspect-ratio: 16/9;
+      background: var(--bg-alt);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+    }
+    .modal-hero-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .modal-placeholder {
+      font-family: var(--serif);
+      font-size: 5rem;
+      font-weight: 300;
+      color: var(--ink-faint);
+    }
+    .modal-cat { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.6rem; }
+    .modal-title { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.5rem; }
+    .modal-client { font-size: 0.82rem; color: var(--ink-faint); margin-bottom: 2rem; }
+    .modal-meta-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+    .meta-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.35rem; }
+    .meta-val { font-size: 0.9rem; color: var(--ink); font-weight: 400; }
+    .modal-sec { margin-bottom: 2.5rem; }
+    .modal-sec-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; margin-bottom: 0.85rem; }
+    .modal-sec p { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.8; margin-bottom: 0.75rem; }
+    .tools-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .tool-chip {
+      border: 1px solid var(--border); border-radius: 2px;
+      padding: 0.28rem 0.65rem; font-size: 0.73rem; color: var(--ink-mid);
+    }
+    .img-gallery { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+    .gallery-img {
+      aspect-ratio: 4/3; background: var(--bg-alt);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: var(--ink-faint); letter-spacing: 0.08em;
+      overflow: hidden;
+    }
+    .gallery-img img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-img.has-img { cursor: zoom-in; }
+    .gallery-img.has-img:hover img { opacity: 0.85; transition: opacity 0.2s; }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 900;
+      background: rgba(15,15,13,0.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+      padding: 2rem;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img {
+      max-width: 100%; max-height: 90vh;
+      object-fit: contain;
+      transform: scale(0.94);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+    }
+    .lightbox.open img { transform: scale(1); }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: none; border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 2px; padding: 0.4rem 0.9rem;
+      color: rgba(255,255,255,0.6); font-family: var(--sans);
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .lightbox-close:hover { border-color: white; color: white; }
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: none; border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.6); font-size: 1.2rem;
+      width: 44px; height: 44px; border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .lightbox-nav:hover { border-color: white; color: white; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      font-size: 0.72rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.4);
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeIn 0.9s cubic-bezier(0.16,1,0.3,1) both; }
+    .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.22s; } .d3 { animation-delay: 0.35s; } .d4 { animation-delay: 0.48s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; gap: 3rem; }
+      .section-wrap { padding: 5rem 1.5rem; }
+      #about { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-sticky { position: static; }
+      .project-grid { grid-template-columns: 1fr; }
+      .exp-row { grid-template-columns: 1fr; gap: 0.75rem; }
+      .exp-tags { justify-content: flex-start; }
+      .modal-sheet { width: 100vw; }
+      .modal-meta-row { grid-template-columns: 1fr 1fr; }
+      .img-gallery { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">Guilherme Neves</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about" data-i18n="nav_about">About</a></li>
+      <li><a href="#portfolio" data-i18n="nav_work">Work</a></li>
+      <li><a href="#experience" data-i18n="nav_exp">Experience</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <button class="lang-btn" id="langBtn">
+      <span id="langActive">EN</span>
+      <span class="sep">/</span>
+      <span id="langOther">PT</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="section-wrap" id="hero">
+  <div class="hero-left">
+    <p class="hero-sup fade-in">Product Designer</p>
+    <h1 class="hero-name fade-in d1">Guilherme<br /><em>Neves</em></h1>
+    <p class="hero-tagline fade-in d2" data-i18n="hero_tagline">Product Designer with 8+ years of experience designing complex digital products and scalable web platforms. Specialized in UX strategy, product discovery and design systems.</p>
+    <a href="#portfolio" class="hero-cta fade-in d3" data-i18n="hero_cta">View selected work →</a>
+  </div>
+  <div class="hero-right fade-in d4">
+    <div class="hero-photo">
+      <img src="uploads/photo-1777565966046.png" alt="Guilherme Neves" />
+    </div>
+    <div class="hero-caption">
+      <span data-i18n="hero_location">Based in Brazil</span>
+      <span data-i18n="hero_status">Open to opportunities</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="section-wrap alt" id="about-wrap">
+  <section id="about">
+    <div class="about-sticky">
+      <p class="label" data-i18n="about_label">About</p>
+      <div class="about-intro" data-i18n="about_intro">Designer focused on what matters — <em>people and outcomes.</em></div>
+    </div>
+    <div class="about-text">
+      <p data-i18n="about_p1">With over 8 years in the field, I've partnered with global companies like Walmart, FNZ, Banco do Brasil and Bradesco to design complex digital products that scale. My work sits at the intersection of user research, product strategy and visual craft.</p>
+      <p data-i18n="about_p2">I'm specialized in UX strategy and product discovery — helping teams ask the right questions before jumping to solutions. I've built design systems from the ground up, led cross-functional squads, and shipped products used by millions.</p>
+      <p data-i18n="about_p3">I believe great design is invisible: when things work so naturally that users don't think twice, that's when I know the job is done.</p>
+      <hr class="divider" />
+      <p class="label" data-i18n="skills_label">Skills</p>
+      <div class="skills-grid" id="skillsGrid"></div>
+      <div class="lang-pills">
+        <span class="lang-pill" data-i18n="lang_pt">🇧🇷 Brazilian Portuguese</span>
+        <span class="lang-pill" data-i18n="lang_en">🇬🇧 English</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PORTFOLIO -->
+<div class="section-wrap" id="portfolio">
+  <p class="label" data-i18n="work_label">Selected Work</p>
+  <h2 class="section-title" data-i18n="work_title">Recent <em>Projects</em></h2>
+  <div class="project-grid" id="projectGrid"></div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section-wrap" id="experience">
+  <p class="label" data-i18n="exp_label">Experience</p>
+  <h2 class="section-title" data-i18n="exp_title">Where I've <em>worked</em></h2>
+  <div id="expList"></div>
+</div>
+
+<!-- CONTACT -->
+<div class="section-wrap" id="contact">
+  <p class="label" data-i18n="contact_label">Get in touch</p>
+  <h2 class="contact-heading" data-i18n="contact_heading">Let's build<br />something <em>great.</em></h2>
+  <div class="contact-links">
+    <a href="mailto:gui.simoes.neves@gmail.com" class="contact-link">gui.simoes.neves@gmail.com</a>
+    <a href="https://www.linkedin.com/in/guilherme-neves-b0b198147/" class="contact-link" target="_blank">LinkedIn</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <span class="footer-name">Guilherme Neves</span>
+  <span class="footer-year">© 2025</span>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">Close ✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+  <img id="lightboxImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" />
+  <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+  <span class="lightbox-counter" id="lightboxCounter"></span>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay"></div>
+<div class="modal-sheet" id="modalSheet">
+  <div class="modal-header">
+    <span class="label" style="margin:0" data-i18n="work_label">Selected Work</span>
+    <button class="modal-close-btn" id="modalClose" data-i18n="close_btn">Close</button>
+  </div>
+  <div class="modal-body" id="modalBody"></div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// DATA
+// ─────────────────────────────────────────────
+const skills = ["Figma", "Claude Design", "Cursor", "Design Thinking", "Design Systems", "Jira", "Confluence", "Agile"];
+
+const projects = [
+  {
+    id: 1,
+    title: "Chargebacks",
+    client: "Walmart · Seller Center",
+    category: { en: "Ecommerce · Enterprise", pt: "Ecommerce · Enterprise" },
+    desc: {
+      en: "Designed and implemented the chargebacks functionality on Walmart Seller Center, increasing business revenue, reducing fraud and optimizing seller experience.",
+      pt: "Desenhei e implementei a funcionalidade de chargebacks no Walmart Seller Center, aumentando a receita, reduzindo fraudes e otimizando a experiência dos vendedores."
+    },
+    role: { en: "Senior Product Designer", pt: "Designer de Produto Sênior" },
+    year: "2024–2026",
+    client_full: "Walmart",
+    problem: {
+      en: "Walmart's Seller Center lacked a structured way for sellers to dispute chargebacks, causing revenue losses and a fragmented, confusing experience for the Payments and Financial Services team.",
+      pt: "O Seller Center da Walmart não tinha uma forma estruturada para vendedores contestarem chargebacks, causando perdas de receita e uma experiência fragmentada para o time de Pagamentos e Serviços Financeiros."
+    },
+    process: {
+      en: "I led end-to-end discovery sessions with the financial services team and sellers, mapping pain points across the dispute lifecycle. From there, we ran a competitor analysis to understand how other platforms handle chargeback disputes — identifying patterns and gaps that informed our approach. With those insights, we held brainstorming sessions with stakeholders to explore possible solutions and prioritize the most impactful ones. I then translated the strongest ideas into interactive prototypes, which we tested with real sellers to validate our hypotheses and refine the flows before development. The final design covered submission, evidence upload, and resolution tracking, ensuring full alignment with compliance requirements.",
+      pt: "Liderei sessões de discovery com o time de serviços financeiros e vendedores, mapeando pontos de dor ao longo do ciclo de disputa. Em seguida, realizamos uma análise de concorrentes para entender como outras plataformas lidam com disputas de chargeback — identificando padrões e lacunas que embasaram nossa abordagem. Com esses insights, realizamos sessões de brainstorming com stakeholders para explorar possíveis soluções e priorizar as de maior impacto. Transformei as melhores ideias em protótipos interativos, que foram testados com vendedores reais para validar nossas hipóteses e refinar os fluxos antes do desenvolvimento. O design final cobriu submissão, upload de evidências e acompanhamento de resolução, garantindo total conformidade com requisitos regulatórios."
+    },
+    tools: ["Figma", "Confluence", "Jira", "Design Thinking", "Agile"],
+    gallery: [
+      "uploads/inquiries.png",
+      "uploads/Represented details.png",
+      "uploads/Takeover.png",
+      "uploads/Takeovermodal.png"
+    ]
+  },
+  {
+    id: 2,
+    title: { en: "Consortium", pt: "Consórcio" },
+    client: "Banco do Brasil",
+    category: { en: "Banking · Mobile & Web", pt: "Banco · Mobile & Web" },
+    desc: {
+      en: "Delivered a streamlined, consistent payment experience that improved usability and aligned the consortium journey with modern product standards.",
+      pt: "Entreguei uma experiência de pagamento simplificada e consistente que melhorou a usabilidade e alinhou a jornada do consórcio a padrões modernos de produto."
+    },
+    role: { en: "Senior Product Designer", pt: "Designer de Produto Sênior" },
+    year: "2020–2021",
+    client_full: "Banco do Brasil · Capgemini",
+    problem: {
+      en: "Banco do Brasil's consortium product had grown organically over years, resulting in inconsistent UX patterns, outdated visual language, and high drop-off rates at key payment milestones.",
+      pt: "O produto de consórcio do Banco do Brasil havia crescido de forma orgânica ao longo dos anos, resultando em padrões de UX inconsistentes, linguagem visual desatualizada e altas taxas de abandono em marcos-chave de pagamento."
+    },
+    process: {
+      en: "I audited the full payment journey, ran heuristic evaluations and user interviews to prioritize improvements. I then redesigned the core flows using the bank's design system, and ran usability sessions to validate each iteration before handoff.",
+      pt: "Auditei toda a jornada de pagamento, realizei avaliações heurísticas e entrevistas com usuários para priorizar melhorias. Redesenhei os fluxos principais usando o design system do banco e realizei sessões de usabilidade para validar cada iteração antes do handoff."
+    },
+    tools: ["Figma", "Maze", "Miro", "Confluence"],
+    gallery: [
+      "uploads/IMG-1.png",
+      "uploads/IMG-3.png",
+      "uploads/IMG-5.png",
+      "uploads/IMG-8.png"
+    ]
+  },
+  {
+    id: 3,
+    title: "FAdA",
+    client: "Banco do Brasil · Capgemini",
+    category: { en: "Data Tool · Dashboard", pt: "Ferramenta de Dados · Dashboard" },
+    desc: {
+      en: "A dashboard that helps chatbot curators easily explore and optimize conversation data from users' interactions with Banco do Brasil's AI assistant.",
+      pt: "Um dashboard que ajuda curadores de chatbot a explorar e otimizar dados de conversas das interações dos usuários com o assistente de IA do Banco do Brasil."
+    },
+    role: { en: "Senior Product Designer", pt: "Designer de Produto Sênior" },
+    year: "2020–2021",
+    client_full: "Banco do Brasil · Capgemini",
+    problem: {
+      en: "Chatbot analysts had no centralized tool to review conversation logs, identify failure points, and measure improvements over time — forcing them to work across disconnected spreadsheets and reports.",
+      pt: "Os analistas de chatbot não tinham uma ferramenta centralizada para revisar logs de conversas, identificar pontos de falha e medir melhorias ao longo do tempo — sendo forçados a trabalhar com planilhas e relatórios desconectados."
+    },
+    process: {
+      en: "I embedded with the analyst team for two weeks to understand their daily workflow. From that research I defined the core data views, built an information architecture for the dashboard, and designed an interface that surfaced the most critical metrics up front while allowing deep-dives into individual conversations.",
+      pt: "Trabalhei junto ao time de analistas por duas semanas para entender o fluxo de trabalho diário. A partir dessa pesquisa, defini as visualizações de dados centrais, construí a arquitetura de informação do dashboard e desenhei uma interface que trazia as métricas mais críticas à frente, permitindo aprofundamento em conversas individuais."
+    },
+    tools: ["Figma", "Miro", "Design Thinking", "Confluence"],
+    gallery: [
+      "uploads/IMG.png",
+      "uploads/IMG-8-45929b8f.png",
+      "uploads/IMG-4.png",
+      "uploads/IMG-9.png"
+    ]
+  },
+  {
+    id: 4,
+    title: "AMS HUB",
+    client: "FNZ",
+    category: { en: "Fintech · Investment Platform", pt: "Fintech · Plataforma de Investimentos" },
+    desc: {
+      en: "AMS HUB empowers investment advisors to efficiently build, optimize and analyze fixed-income portfolios through a unified platform.",
+      pt: "O AMS HUB capacita assessores de investimento a construir, otimizar e analisar carteiras de renda fixa de forma eficiente em uma plataforma unificada."
+    },
+    role: { en: "Senior Product Designer", pt: "Designer de Produto Sênior" },
+    year: "2021–2024",
+    client_full: "FNZ",
+    problem: {
+      en: "Investment advisors were managing fixed-income portfolios across multiple disconnected tools, creating inefficiencies and increasing the risk of errors. FNZ needed a white-label platform that could serve multiple financial institutions simultaneously.",
+      pt: "Assessores de investimento gerenciavam carteiras de renda fixa em múltiplas ferramentas desconectadas, criando ineficiências e aumentando o risco de erros. A FNZ precisava de uma plataforma white-label que pudesse atender múltiplas instituições financeiras simultaneamente."
+    },
+    process: {
+      en: "I worked closely with the founding product team to define the platform's information architecture and core workflows. The platform was built around three core entities — Households, Proposals, and Strategies — which shaped every design decision we made. We designed five advisor-facing apps: Target Model Builder, SMA Builder, LadderBuilder, Optimizer, and Asset Explorer, each targeting a specific portfolio management need. A key design principle across all five was to use wizard-style workflows with consistent interactions, so advisors could quickly get familiar with one app and immediately feel at home in the others. Alongside the design team, we collaboratively built the Miles design system from scratch — a shared effort to ensure scalability and visual consistency across all FNZ white-label products, as the platform needed to serve multiple financial institutions under their own branding. Together we established the token structure, component library, and documentation in Figma and Storybook, with each team member contributing to different parts of the system.",
+      pt: "Trabalhei com o time fundador de produto para definir a arquitetura de informação e os fluxos centrais da plataforma. A plataforma foi construída em torno de três entidades centrais — Households, Proposals e Strategies — que guiaram cada decisão de design. Desenhamos cinco apps para assessores: Target Model Builder, SMA Builder, LadderBuilder, Optimizer e Asset Explorer, cada um atendendo uma necessidade específica de gestão de carteiras. Um princípio de design fundamental em todos os cinco apps foi o uso de fluxos em formato wizard com interações consistentes, para que os assessores pudessem se familiarizar rapidamente com um app e imediatamente se sentir em casa nos demais. Em conjunto com o time de design, construímos colaborativamente o design system Miles do zero — um esforço compartilhado para garantir escalabilidade e consistência visual em todos os produtos white-label da FNZ, já que a plataforma precisava atender múltiplas instituições financeiras sob sua própria marca. Juntos estabelecemos a estrutura de tokens, a biblioteca de componentes e a documentação no Figma e Storybook, com cada membro do time contribuindo para diferentes partes do sistema."
+    },
+    tools: ["Figma", "Storybook", "Jira", "Confluence", "Agile"],
+    gallery: [
+      "uploads/Orders3.jpg",
+      "uploads/Orders2.jpg",
+      "uploads/Orders.jpg",
+      "uploads/AXP - Fixed income.jpg",
+      "uploads/image 19.png",
+      "uploads/image 20.png",
+      "uploads/image 21.png",
+      "uploads/1.png",
+      "uploads/0.png",
+      "uploads/0-f4e47d62.png",
+      "uploads/3.png"
+    ]
+  }
+];
+
+const experience = [
+  {
+    period: "2024 — 2026",
+    company: ".Monks",
+    client: "Walmart",
+    role: { en: "Senior Product Designer", pt: "Designer de Produto Sênior" },
+    desc: {
+      en: "Delivered high-impact design solutions for the Seller Center app at Walmart. Helped the Payments and Financial Services team grow, optimize user experience, and increase company revenue through design.",
+      pt: "Entreguei soluções de design de alto impacto para o Seller Center da Walmart. Ajudei o time de Pagamentos e Serviços Financeiros a crescer, otimizar a experiência do usuário e aumentar a receita da empresa por meio do design."
+    },
+    tags: ["Ecommerce", "Enterprise", "Web App", "Payments"]
+  },
+  {
+    period: "2021 — 2024",
+    company: "FNZ",
+    client: null,
+    role: { en: "Senior Product Designer", pt: "Designer de Produto Sênior" },
+    desc: {
+      en: "Designed a white-label platform for advisors to easily create and maintain investment portfolios for their clients. Also created a design system for the platform's scalability and consistency.",
+      pt: "Desenhei uma plataforma white-label para assessores criarem e manterem carteiras de investimento para seus clientes. Também criei um design system para escalabilidade e consistência da plataforma."
+    },
+    tags: ["Investment", "Design System", "White-label", "B2B"]
+  },
+  {
+    period: "2020 — 2021",
+    company: "Capgemini",
+    client: "Banco do Brasil",
+    role: { en: "Senior Product Designer", pt: "Designer de Produto Sênior" },
+    desc: {
+      en: "Implemented various banking solutions for Banco do Brasil users. Worked on chatbots and AI conversational interfaces, and created an internal dashboard (FAdA) for analysts to collect data from user interactions.",
+      pt: "Implementei soluções bancárias para os usuários do Banco do Brasil. Trabalhei em chatbots e interfaces conversacionais com IA, e criei um dashboard interno (FAdA) para analistas coletarem dados das interações dos usuários."
+    },
+    tags: ["Banking", "AI / Chatbot", "Dashboard", "UX Research"]
+  },
+  {
+    period: "2019 — 2020",
+    company: "Mutant",
+    client: "Vivo (main)",
+    role: { en: "UX Designer", pt: "Designer de UX" },
+    desc: {
+      en: "Worked for clients including Sky, Tim, and Santander, primarily Vivo. Implemented new features and improvements for Vivo's AI assistant (Aura), increasing revenue by optimizing conversion rate and user experience.",
+      pt: "Trabalhei para clientes como Sky, Tim e Santander, principalmente Vivo. Implementei novas funcionalidades para o assistente de IA da Vivo (Aura), aumentando a receita ao otimizar a taxa de conversão e a experiência do usuário."
+    },
+    tags: ["Telecom", "AI Assistant", "Conversion", "UX"]
+  },
+  {
+    period: "2015 — 2019",
+    company: "P3K Comunicação",
+    client: "Bradesco",
+    role: { en: "Designer & Brand Analyst", pt: "Designer & Analista de Marca" },
+    desc: {
+      en: "Helped Bradesco's marketing team manage the company's brand across all branches. Implemented an in-agency app for clients to visualize and download legal and promotional content.",
+      pt: "Ajudei o time de marketing do Bradesco a gerenciar a marca e todas as suas filiais. Implementei um app em agências para clientes visualizarem e baixarem conteúdo jurídico e promocional."
+    },
+    tags: ["Banking", "Brand", "Marketing", "App"]
+  },
+  {
+    period: "2014 — 2015",
+    company: "Bradesco",
+    client: null,
+    role: { en: "Design Trainee", pt: "Trainee de Design" },
+    desc: {
+      en: "Supported Bradesco's marketing team on brand management and digital content creation alongside the bank's vendors, implementing content across various bank agencies.",
+      pt: "Apoiei o time de marketing do Bradesco na gestão de marca e criação de conteúdo digital, implementando conteúdos em diversas agências do banco."
+    },
+    tags: ["Banking", "Brand", "Digital Content"]
+  }
+];
+
+// ─────────────────────────────────────────────
+// i18n
+// ─────────────────────────────────────────────
+const i18n = {
+  en: {
+    nav_about: "About", nav_work: "Work", nav_exp: "Experience", nav_contact: "Contact",
+    hero_tagline: "Product Designer with 8+ years of experience designing complex digital products and scalable web platforms. Specialized in UX strategy, product discovery and design systems.",
+    hero_cta: "View selected work →",
+    about_label: "About",
+    about_intro: "Designer focused on what matters — <em>people and outcomes.</em>",
+    about_p1: "With over 8 years in the field, I've partnered with global companies like Walmart, FNZ, Banco do Brasil and Bradesco to design complex digital products that scale. My work sits at the intersection of user research, product strategy and visual craft.",
+    about_p2: "I'm specialized in UX strategy and product discovery — helping teams ask the right questions before jumping to solutions. I've built design systems from the ground up, led cross-functional squads, and shipped products used by millions.",
+    about_p3: "I believe great design is invisible: when things work so naturally that users don't think twice, that's when I know the job is done.",
+    skills_label: "Skills",
+    lang_pt: "🇧🇷 Brazilian Portuguese",
+    lang_en: "🇬🇧 English",
+    work_label: "Selected Work",
+    work_title: "Recent <em>Projects</em>",
+    exp_label: "Experience",
+    exp_title: "Where I've <em>worked</em>",
+    contact_label: "Get in touch",
+    contact_heading: "Let's build<br />something <em>great.</em>",
+    close_btn: "Close",
+    hero_location: "Based in Brazil", hero_status: "Open to opportunities",
+    modal_role: "Role", modal_year: "Year", modal_client: "Client",
+    problem_title: "Problem", process_title: "Process", tools_title: "Tools",
+    gallery_title: "Mockups / Gallery"
+  },
+  pt: {
+    nav_about: "Sobre", nav_work: "Trabalhos", nav_exp: "Experiência", nav_contact: "Contato",
+    hero_tagline: "Designer de Produto com 8+ anos de experiência em produtos digitais complexos e plataformas web escaláveis. Especializado em estratégia de UX, descoberta de produto e design systems.",
+    hero_cta: "Ver trabalhos selecionados →",
+    about_label: "Sobre",
+    about_intro: "Designer focado no que importa — <em>pessoas e resultados.</em>",
+    about_p1: "Com mais de 8 anos de experiência, trabalhei com empresas globais como Walmart, FNZ, Banco do Brasil e Bradesco no design de produtos digitais complexos e escaláveis. Meu trabalho está na interseção de pesquisa com usuários, estratégia de produto e craft visual.",
+    about_p2: "Sou especializado em estratégia de UX e descoberta de produto — ajudando times a fazer as perguntas certas antes de partir para soluções. Construí design systems do zero, liderei squads multifuncionais e lancei produtos usados por milhões.",
+    about_p3: "Acredito que o grande design é invisível: quando as coisas funcionam tão naturalmente que os usuários não pensam duas vezes, é quando sei que o trabalho está feito.",
+    skills_label: "Habilidades",
+    lang_pt: "🇧🇷 Português Brasileiro",
+    lang_en: "🇬🇧 Inglês",
+    work_label: "Trabalhos Selecionados",
+    work_title: "Projetos <em>Recentes</em>",
+    exp_label: "Experiência",
+    exp_title: "Onde já <em>trabalhei</em>",
+    contact_label: "Entre em contato",
+    contact_heading: "Vamos criar<br />algo <em>incrível.</em>",
+    close_btn: "Fechar",
+    hero_location: "Baseado no Brasil", hero_status: "Aberto a oportunidades",
+    modal_role: "Papel", modal_year: "Ano", modal_client: "Cliente",
+    problem_title: "Problema", process_title: "Processo", tools_title: "Ferramentas",
+    gallery_title: "Mockups / Galeria"
+  }
+};
+
+let lang = 'en';
+function t(k) { return i18n[lang][k] || k; }
+
+function applyLang() {
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = i18n[lang][el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.getElementById('langActive').textContent = lang.toUpperCase();
+  document.getElementById('langOther').textContent = lang === 'en' ? 'PT' : 'EN';
+  renderSkills();
+  renderProjects();
+  renderExperience();
+}
+
+document.getElementById('langBtn').addEventListener('click', () => {
+  lang = lang === 'en' ? 'pt' : 'en';
+  applyLang();
+});
+
+// ─────────────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────────────
+function renderSkills() {
+  document.getElementById('skillsGrid').innerHTML = skills.map(s => `
+    <div class="skill-item"><span class="skill-dot"></span>${s}</div>
+  `).join('');
+}
+
+const projectImages = {
+  1: "uploads/ChatGPT Image Apr 1, 2026, 05_11_07 PM.png",
+  2: "uploads/ChatGPT Image Apr 1, 2026, 04_48_51 PM.png",
+  3: "uploads/ChatGPT Image Apr 7, 2026, 02_34_34 PM.png",
+  4: "uploads/ChatGPT Image Apr 10, 2026, 04_11_27 PM.png"
+};
+
+// Gallery lookup used by lightbox
+const galleryMap = {};
+projects.forEach(p => { if (p.gallery) galleryMap[p.id] = p.gallery; });
+
+function getTitle(p) { return typeof p.title === 'object' ? p.title[lang] : p.title; }
+
+function renderProjects() {
+  document.getElementById('projectGrid').innerHTML = projects.map((p, i) => `
+    <div class="project-card" onclick="openModal(${p.id})">
+      <div class="card-thumb">${projectImages[p.id] ? `<img src="${projectImages[p.id]}" alt="${p.title}" />` : `<div class="thumb-placeholder">${String(i + 1).padStart(2, '0')}</div>`}</div>
+      <div>
+        <p class="card-num">${String(i + 1).padStart(2, '0')} / ${String(projects.length).padStart(2, '0')}</p>
+        <h3 class="card-title">${getTitle(p)}</h3>
+        <p class="card-client">${p.client}</p>
+      </div>
+      <p class="card-desc">${p.desc[lang]}</p>
+      <span class="card-arrow">↗</span>
+    </div>
+  `).join('');
+}
+
+function renderExperience() {
+  document.getElementById('expList').innerHTML = experience.map(e => `
+    <div class="exp-row">
+      <span class="exp-period">${e.period}</span>
+      <div>
+        <h3 class="exp-co">${e.company}${e.client ? ` <span style="font-size:1rem;color:var(--ink-faint);font-weight:300">· ${e.client}</span>` : ''}</h3>
+        <p class="exp-role">${e.role[lang]}</p>
+        <p class="exp-desc">${e.desc[lang]}</p>
+      </div>
+      <div class="exp-tags">${e.tags.map(tag => `<span class="exp-tag">${tag}</span>`).join('')}</div>
+    </div>
+  `).join('');
+}
+
+// ─────────────────────────────────────────────
+// MODAL
+// ─────────────────────────────────────────────
+function openModal(id) {
+  const p = projects.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-hero-thumb">${projectImages[p.id] ? `<img src="${projectImages[p.id]}" alt="${p.title}" />` : `<div class="modal-placeholder">${String(projects.findIndex(x=>x.id===id)+1).padStart(2,'0')}</div>`}</div>
+    <p class="modal-cat">${p.category[lang]}</p>
+    <h2 class="modal-title">${getTitle(p)}</h2>
+    <p class="modal-client">${p.client_full}</p>
+    <div class="modal-meta-row">
+      <div><p class="meta-label">${t('modal_role')}</p><p class="meta-val">${p.role[lang]}</p></div>
+      <div><p class="meta-label">${t('modal_year')}</p><p class="meta-val">${p.year}</p></div>
+      <div><p class="meta-label">${t('modal_client')}</p><p class="meta-val">${p.client_full}</p></div>
+    </div>
+    <div class="modal-sec">
+      <h3 class="modal-sec-title">${t('problem_title')}</h3>
+      <p>${p.problem[lang]}</p>
+    </div>
+    <div class="modal-sec">
+      <h3 class="modal-sec-title">${t('process_title')}</h3>
+      <p>${p.process[lang]}</p>
+    </div>
+    <div class="modal-sec">
+      <h3 class="modal-sec-title">${t('gallery_title')}</h3>
+      <div class="img-gallery">
+        ${p.gallery
+          ? p.gallery.map((src, i) => `<div class="gallery-img has-img" onclick="openLightbox(galleryMap[${p.id}], ${i})"><img src="${src}" alt="" /></div>`).join('')
+          : `<div class="gallery-img">Mockup 01</div><div class="gallery-img">Mockup 02</div><div class="gallery-img">Mockup 03</div><div class="gallery-img">Mockup 04</div>`
+        }
+      </div>
+    </div>
+    <div class="modal-sec">
+      <h3 class="modal-sec-title">${t('tools_title')}</h3>
+      <div class="tools-row">${p.tools.map(t => `<span class="tool-chip">${t}</span>`).join('')}</div>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:2rem;margin-top:0.5rem;">
+      <a href="https://tinyurl.com/4fcntm3c" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.6rem;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px;" onmouseover="this.style.opacity='0.5'" onmouseout="this.style.opacity='1'">${lang === 'pt' ? 'Ver projeto completo' : 'View full project'} &#x2197;</a>
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.getElementById('modalSheet').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.getElementById('modalSheet').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', closeModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ─────────────────────────────────────────────
+// LIGHTBOX
+// ─────────────────────────────────────────────
+let lbImages = [];
+let lbIndex = 0;
+
+function openLightbox(images, index) {
+  lbImages = images;
+  lbIndex = index;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLightbox() {
+  document.getElementById('lightboxImg').src = lbImages[lbIndex];
+  document.getElementById('lightboxCounter').textContent = `${lbIndex + 1} / ${lbImages.length}`;
+  document.getElementById('lightboxPrev').style.visibility = lbImages.length > 1 ? 'visible' : 'hidden';
+  document.getElementById('lightboxNext').style.visibility = lbImages.length > 1 ? 'visible' : 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightbox').addEventListener('click', e => { if (e.target === e.currentTarget) closeLightbox(); });
+document.getElementById('lightboxPrev').addEventListener('click', e => { e.stopPropagation(); lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; updateLightbox(); });
+document.getElementById('lightboxNext').addEventListener('click', e => { e.stopPropagation(); lbIndex = (lbIndex + 1) % lbImages.length; updateLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; updateLightbox(); }
+  if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; updateLightbox(); }
+});
+
+// ─────────────────────────────────────────────
+// NAV SCROLL
+// ─────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+applyLang();
+</script>
+</body>
+</html>
